@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const usuarios_controller_1 = require("../controllers/usuarios.controller");
+const usuarios = express_1.Router();
+usuarios.route("/users").get(usuarios_controller_1.listUsuarios);
+usuarios.route("/crtuser").post(usuarios_controller_1.createUsuario);
+usuarios.route("/login").post(usuarios_controller_1.loginUsuario);
+usuarios.route("/user/:id_persona").get(usuarios_controller_1.detalleUsuario);
+usuarios.route("/deluser/:id_persona").delete(usuarios_controller_1.deleteUsuario);
+usuarios.route("/upduser/:id_persona").put(usuarios_controller_1.updateUsuario);
+usuarios.route("/updtoken").post(auth_middleware_1.verificaToken, usuarios_controller_1.updateToken);
+usuarios.route("/").get(auth_middleware_1.verificaToken, usuarios_controller_1.observaToken);
+exports.default = usuarios;
