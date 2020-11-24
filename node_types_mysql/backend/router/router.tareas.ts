@@ -16,8 +16,8 @@ import {
 } from "../controllers/tareas.controller";
 
 const tareas = Router();
-
-tareas.route("/tareas").get(verificaToken, listTareas);
+//tareas.route("/tareas").get(verificaToken, listTareas);
+tareas.route("/tareas").get(listTareas);
 tareas.route("/crttarea").post(verificaToken, verificaToken, createTarea);
 tareas.route("/tarea/:id_tarea").get(verificaToken, detalleTarea);
 tareas.route("/deltarea/:id_tarea").delete(verificaToken, deleteTarea);

@@ -5,6 +5,7 @@ import usuarios from "../router/router.usuarios";
 import tareas from "../router/router.tareas";
 import jornadas from "../router/router.jornadas";
 import fileUpload = require("express-fileupload");
+import cors from "cors";
 export default class Server {
   public app: express.Application;
   public port: number;
@@ -28,6 +29,7 @@ export default class Server {
     this.app.use(jornadas);
   }
   middlewares() {
+    this.app.use(cors({ origin: true, credentials: true }));
     this.app.use(bodyParser.urlencoded({ extended: false })); //body parser, nuevo en express
     this.app.use(express.json()); //body parser, nuevo en express
     this.app.use(fileUpload({ useTempFiles: true })); //express-fileupload
