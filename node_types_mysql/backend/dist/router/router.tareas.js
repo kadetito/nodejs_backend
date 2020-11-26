@@ -6,7 +6,7 @@ const tareas_controller_1 = require("../controllers/tareas.controller");
 const tareas = express_1.Router();
 //tareas.route("/tareas").get(verificaToken, listTareas);
 tareas.route("/tareas").get(tareas_controller_1.listTareas);
-tareas.route("/crttarea").post(auth_middleware_1.verificaToken, auth_middleware_1.verificaToken, tareas_controller_1.createTarea);
+tareas.route("/crttarea").post(auth_middleware_1.verificaToken, tareas_controller_1.createTarea);
 tareas.route("/tarea/:id_tarea").get(auth_middleware_1.verificaToken, tareas_controller_1.detalleTarea);
 tareas.route("/deltarea/:id_tarea").delete(auth_middleware_1.verificaToken, tareas_controller_1.deleteTarea);
 tareas.route("/updtarea/:id_tarea").put(auth_middleware_1.verificaToken, tareas_controller_1.updateTarea);

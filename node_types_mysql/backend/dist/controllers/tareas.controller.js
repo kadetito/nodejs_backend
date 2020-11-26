@@ -20,7 +20,7 @@ const fs_1 = __importDefault(require("fs"));
 const fileSystem = new file_system_1.default();
 function listTareas(req, res) {
     const objeto = "";
-    const query = `SELECT * FROM panel_tareas`;
+    const query = `SELECT * FROM panel_tareas ORDER by id_tarea DESC`;
     mysql_1.default.ejecutarQuery(query, objeto, (error, tareas) => {
         if (error) {
             res.status(400).json({
@@ -38,17 +38,18 @@ function listTareas(req, res) {
 }
 exports.listTareas = listTareas;
 function createTarea(req, res) {
-    const prs = req.get("x-prs") || "";
+    // const prs: string = req.get("x-prs") || "";
     const objeto = "";
     const tarea_referencia = req.body.tarea_referencia;
     const tarea_tarea = req.body.tarea_tarea;
-    const tarea_asignada = prs;
+    const tarea_asignada = req.body.tarea_asignada;
     const tarea_fecha_creacion = req.body.tarea_fecha_creacion;
     const tarea_descripcion = req.body.tarea_descripcion;
     const tarea_horas = req.body.tarea_horas;
     const tarea_cliente = req.body.tarea_cliente;
     const tarea_estado = req.body.tarea_estado;
-    const query = `INSERT INTO panel_tareas (tarea_referencia,tarea_tarea,tarea_asignada,tarea_fecha_creacion,tarea_descripcion,tarea_horas,tarea_cliente,tarea_estado) VALUES ('${tarea_referencia}','${tarea_tarea}','${tarea_asignada}','${tarea_fecha_creacion}','${tarea_descripcion}','${tarea_horas}','${tarea_cliente}','${tarea_estado}')`;
+    const tarea_coordenadas = req.body.tarea_coordenadas;
+    const query = `INSERT INTO panel_tareas (tarea_referencia,tarea_tarea,tarea_asignada,tarea_fecha_creacion,tarea_descripcion,tarea_horas,tarea_cliente,tarea_estado,tarea_coordenadas) VALUES ('${tarea_referencia}','${tarea_tarea}','${tarea_asignada}','${tarea_fecha_creacion}','${tarea_descripcion}','${tarea_horas}','${tarea_cliente}','${tarea_estado}','${tarea_coordenadas}')`;
     mysql_1.default.ejecutarQuery(query, objeto, (error, tareas) => {
         if (error) {
             res.status(400).json({

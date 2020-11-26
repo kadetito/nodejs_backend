@@ -9,4 +9,5 @@ export interface Tareas {
   tarea_cliente: string;
   tarea_estado: string;
   tarea_imagenes: string[];
+  tarea_coordenadas: string;
 }

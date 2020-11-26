@@ -154,7 +154,8 @@ function deleteUsuario(req, res) {
 }
 exports.deleteUsuario = deleteUsuario;
 function updateUsuario(req, res) {
-    const id_persona = mysql_1.default.instance.conn.escape(req.params.id_persona);
+    // const id_persona = MySQL.instance.conn.escape(req.params.id_persona);
+    const id_persona = req.body.id_persona;
     const objeto = req.body;
     const query = `UPDATE panel_personas SET ? WHERE id_persona = ${id_persona}`;
     mysql_1.default.ejecutarQuery(query, objeto, (error, usuarios) => {
@@ -199,7 +200,7 @@ exports.updateToken = updateToken;
 function observaToken(req, res) {
     const usuari = req.get("x-token") || "";
     const objeto = "";
-    const query = `SELECT * FROM panel_personas WHERE token=${usuari}`;
+    const query = `SELECT * FROM panel_personas WHERE token='${usuari}'`;
     mysql_1.default.ejecutarQuery(query, objeto, (error, usuario) => {
         if (error) {
             res.status(400).json({

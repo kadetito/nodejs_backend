@@ -116,7 +116,7 @@ export function detalleUsuario(req: Request, res: Response) {
   const objeto = "";
   const query = `SELECT * FROM panel_personas WHERE id_persona=${id_persona}`;
 
-  MySQL.ejecutarQuery(query, objeto, (error: any, usuario: Object[]) => {
+  MySQL.ejecutarQuery(query, objeto, (error: any, usuario: Usuarios[]) => {
     if (error) {
       res.status(400).json({
         ok: false,
@@ -154,7 +154,8 @@ export function deleteUsuario(req: Request, res: Response) {
 }
 
 export function updateUsuario(req: Request, res: Response) {
-  const id_persona = MySQL.instance.conn.escape(req.params.id_persona);
+  // const id_persona = MySQL.instance.conn.escape(req.params.id_persona);
+  const id_persona: Usuarios = req.body.id_persona;
   const objeto: Usuarios = req.body;
   const query = `UPDATE panel_personas SET ? WHERE id_persona = ${id_persona}`;
   MySQL.ejecutarQuery(query, objeto, (error: any, usuarios: Object[]) => {
@@ -204,7 +205,7 @@ export function observaToken(req: any, res: Response) {
   const usuari: string = req.get("x-token") || "";
 
   const objeto = "";
-  const query = `SELECT * FROM panel_personas WHERE token=${usuari}`;
+  const query = `SELECT * FROM panel_personas WHERE token='${usuari}'`;
 
   MySQL.ejecutarQuery(query, objeto, (error: any, usuario: Object[]) => {
     if (error) {
