@@ -4,12 +4,15 @@
     "description": "",
     "main": "index.js",
     "engines": {
-        "node": "12.19.0"
+        "node": "12.19.0",
+        "npm": "6.14.8"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "html": "copyfiles --up 1 src/public/*.html dist",
-        "build": "tsc"
+        "build": "tsc && npm run html",
+        "start": "node dist"
+
     },
     "author": "",
     "license": "ISC",
