@@ -9,9 +9,9 @@ export default class MySQL {
   constructor() {
     console.log("Clase inicializada");
     this.conn = mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
+      host: "qaei887.rafapenya.com",
+      user: "qaei887",
+      password: "JRK441e22",
       database: "qaei887",
     });
 

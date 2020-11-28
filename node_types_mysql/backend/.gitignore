@@ -1,0 +1,10 @@
+node_modules
+controllers
+interfaces
+middleware
+mysql
+public
+router
+server
+uploads
+index.ts
