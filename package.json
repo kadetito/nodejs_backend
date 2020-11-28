@@ -9,8 +9,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "html": "copyfiles --up 1 src/public/*.html dist",
-        "build": "tsc && npm run html",
-        "tsc": "tsc"
+        "build": "tsc"
     },
     "author": "",
     "license": "ISC",
