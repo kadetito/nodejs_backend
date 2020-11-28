@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const jornadas_controller_1 = require("../controllers/jornadas.controller");
+const jornadas = express_1.Router();
+jornadas.route("/jornadas").get(jornadas_controller_1.listJornadas);
+jornadas.route("/crtjornada").post(jornadas_controller_1.createJornada);
+jornadas.route("/jornada/:id_jornada").get(jornadas_controller_1.detalleJornada);
+jornadas.route("/deljornada/:id_jornada").delete(jornadas_controller_1.deleteJornada);
+jornadas.route("/updjornada/:id_jornada").put(jornadas_controller_1.updateJornada);
+exports.default = jornadas;
